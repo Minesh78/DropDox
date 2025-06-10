@@ -50,13 +50,3 @@ ImageKit - Image optimization and storage service
 
 Deployment
 Vercel - Platform for deployment (recommended)
-
-System Architecture
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Frontend      │    │   Backend       │    │   External      │
-│   (Next.js)     │    │   (API Routes)  │    │   Services      │
-├─────────────────┤    ├─────────────────┤    ├─────────────────┤
-│ • Hero UI       │◄──►│ • Auth Middleware│◄──►│ • Clerk Auth    │
-│ • Tailwind CSS  │    │ • File Handlers │    │ • Neon DB       │
-│ • React         │    │ • DB Queries    │    │ • ImageKit      │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
