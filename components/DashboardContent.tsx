@@ -1,5 +1,5 @@
 "use client";
-
+import { useUser } from "@clerk/nextjs";
 import { useState, useCallback, useEffect } from "react";
 import { Card, CardBody, CardHeader } from "@heroui/card";
 import { Tabs, Tab } from "@heroui/tabs";
@@ -25,6 +25,8 @@ export default function DashboardContent({
   const [refreshTrigger, setRefreshTrigger] = useState(0);
   const [currentFolder, setCurrentFolder] = useState<string | null>(null);
 
+  const {  user } = useUser();
+
   // Set the active tab based on URL parameter
   useEffect(() => {
     if (tabParam === "profile") {
@@ -48,11 +50,9 @@ export default function DashboardContent({
         <h2 className="text-4xl font-bold text-default-900">
           Hi,{" "}
           <span className="text-primary">
-            {userName?.length > 10
-              ? `${userName?.substring(0, 10)}...`
-              : userName?.split(" ")[0] || "there"}
+            { user?.username ? user.username : user?.emailAddresses?.[0]?.emailAddress || "there"}
           </span>
-          !
+          {" "}!
         </h2>
         <p className="text-default-600 mt-2 text-lg">
           Your images are waiting for you.

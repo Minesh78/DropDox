@@ -13,6 +13,7 @@ import { Card, CardBody, CardHeader, CardFooter } from "@heroui/card";
 import { Divider } from "@heroui/divider";
 import {
 	Mail,
+	User,
 	Lock,
 	AlertCircle,
 	CheckCircle,
@@ -41,6 +42,7 @@ export default function SignUpForm() {
 	} = useForm<z.infer<typeof signUpSchema>>({
 		resolver: zodResolver(signUpSchema),
 		defaultValues: {
+			userName:"",
 			email: "",
 			password: "",
 			passwordConfirmation: "",
@@ -55,6 +57,7 @@ export default function SignUpForm() {
 
 		try {
 			await signUp.create({
+				username: data.userName,
 				emailAddress: data.email,
 				password: data.password,
 			});
@@ -271,6 +274,23 @@ export default function SignUpForm() {
 						)}
 
 						<form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+							<div className="space-y-2">
+								<label
+									htmlFor="userName"
+									className="text-sm font-medium text-default-900">
+									User Name
+								</label>
+								<Input
+									id="userName"
+									type="userName"
+									placeholder="UserName123"
+									startContent={<User className="h-4 w-4 text-default-500" />}
+									isInvalid={!!errors.userName}
+									errorMessage={errors.userName?.message}
+									{...register("userName")}
+									className="w-full"
+								/>
+							</div>
 							<div className="space-y-2">
 								<label
 									htmlFor="email"
