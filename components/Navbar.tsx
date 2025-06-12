@@ -15,20 +15,20 @@ import { Avatar } from "@heroui/avatar";
 import { Button } from "@heroui/button";
 import { useState, useEffect, useRef } from "react";
 
-// interface SerializedUser {
-// 	id: string;
-// 	firstName?: string | null;
-// 	lastName?: string | null;
-// 	imageUrl?: string | null;
-// 	username?: string | null;
-// 	emailAddress?: string | null;
-// }
+interface SerializedUser {
+	id: string;
+	firstName?: string | null;
+	lastName?: string | null;
+	imageUrl?: string | null;
+	username?: string | null;
+	emailAddress?: string | null;
+}
 
-// interface NavbarProps {
-// 	user?: SerializedUser | null;
-// }
+interface NavbarProps {
+	userNav?: SerializedUser | null;
+}
 
-export default function Navbar() {
+export default function Navbar( {userNav}:NavbarProps) {
 	const { signOut } = useClerk();
   const {user} = useUser(); 
 	const router = useRouter();
