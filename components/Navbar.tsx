@@ -15,18 +15,18 @@ import { Avatar } from "@heroui/avatar";
 import { Button } from "@heroui/button";
 import { useState, useEffect, useRef } from "react";
 
-interface SerializedUser {
-	id: string;
-	firstName?: string | null;
-	lastName?: string | null;
-	imageUrl?: string | null;
-	username?: string | null;
-	emailAddress?: string | null;
-}
+// interface SerializedUser {
+// 	id: string;
+// 	firstName?: string | null;
+// 	lastName?: string | null;
+// 	imageUrl?: string | null;
+// 	username?: string | null;
+// 	emailAddress?: string | null;
+// }
 
-interface NavbarProps {
-	user?: SerializedUser | null;
-}
+// interface NavbarProps {
+// 	user?: SerializedUser | null;
+// }
 
 export default function Navbar() {
 	const { signOut } = useClerk();
@@ -115,9 +115,9 @@ export default function Navbar() {
 					.join("")
 					.toUpperCase() || "U"
 			: "U",
-		displayName: user ? user.username || user.emailAddress : "User",
+		displayName: user ? user.username  : "User",
 
-		email: user?.emailAddress || "",
+		email: user?.emailAddresses[0]?.emailAddress || "",
 	};
 
 	const toggleMobileMenu = () => {
