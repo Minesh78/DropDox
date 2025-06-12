@@ -12,6 +12,7 @@ import {
 import Navbar from "@/components/Navbar";
 
 export default function Home() {
+
 	return (
 		<div className="min-h-screen flex flex-col bg-default-50">
 			{/* Use the unified Navbar component */}
